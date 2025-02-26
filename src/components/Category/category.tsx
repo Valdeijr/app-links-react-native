@@ -10,7 +10,7 @@ type CategoryProps = PressableProps & {
 }
 
 export function Category({ title, icon, isSelect, ...rest }: CategoryProps) {
-  const color = isSelect ? colors.success : colors.gray.medium
+  const color = isSelect ? colors.main : colors.gray.medium
   return (
     <View style={globalStyles.container}>
       <Pressable style={[globalStyles.contentRow, { gap: 8 }]} {...rest}>

@@ -1,8 +1,7 @@
 import { colors } from '@/constants/colors'
-import { fonts } from '@/constants/fonts'
 import { globalStyles } from '@/theme/global'
 import { MaterialIcons } from '@expo/vector-icons'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 
 type LinkProps = {
   name: string
@@ -14,11 +13,11 @@ export function Link({ name, url, onOpen }: LinkProps) {
   return (
     <View style={globalStyles.container}>
       <View style={globalStyles.contentRow}>
-        <View style={globalStyles.content}>
-          <Text style={[globalStyles.text, local.title]} numberOfLines={1}>
+        <View style={{ flex: 1 }}>
+          <Text style={[globalStyles.text, globalStyles.title]} numberOfLines={1}>
             {name}
           </Text>
-          <Text style={[globalStyles.text, local.url]} numberOfLines={1}>
+          <Text style={[globalStyles.text, globalStyles.url]} numberOfLines={1}>
             {url}
           </Text>
         </View>
@@ -29,14 +28,3 @@ export function Link({ name, url, onOpen }: LinkProps) {
     </View>
   )
 }
-
-const local = StyleSheet.create({
-  title: {
-    fontSize: fonts.size.regular,
-    color: colors.white,
-  },
-  url: {
-    fontSize: fonts.size.small,
-    color: colors.gray.medium,
-  },
-})

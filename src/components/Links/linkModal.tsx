@@ -1,5 +1,4 @@
 import { colors } from '@/constants/colors'
-import { fonts } from '@/constants/fonts'
 import { geometries } from '@/constants/geometries'
 import { globalStyles } from '@/theme/global'
 import { FontAwesome } from '@expo/vector-icons'
@@ -18,15 +17,15 @@ export function LinkModal({ name, url, onClose, ...rest }: LinkModalProps) {
       <View style={[globalStyles.container, { justifyContent: 'flex-end' }]}>
         <View style={local.content}>
           <View style={local.header}>
-            <Text style={local.title}>teste</Text>
+            <Text style={globalStyles.title}>teste</Text>
             <TouchableOpacity onPress={onClose}>
               <FontAwesome name="close" size={20} color={colors.gray.medium} />
             </TouchableOpacity>
           </View>
-          <Text style={[globalStyles.text, local.title]} numberOfLines={1}>
+          <Text style={[globalStyles.text, globalStyles.title]} numberOfLines={1}>
             {name}
           </Text>
-          <Text style={[globalStyles.text, local.url]} numberOfLines={1}>
+          <Text style={[globalStyles.text, globalStyles.url]} numberOfLines={1}>
             {url}
           </Text>
           <View style={local.footer}>
@@ -62,13 +61,5 @@ const local = StyleSheet.create({
     borderTopColor: colors.gray.medium,
     marginTop: geometries.spacing.medium,
     paddingTop: geometries.spacing.compact,
-  },
-  title: {
-    fontSize: fonts.size.regular,
-    color: colors.white,
-  },
-  url: {
-    fontSize: fonts.size.small,
-    color: colors.gray.medium,
   },
 })
