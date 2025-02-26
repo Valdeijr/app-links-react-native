@@ -4,6 +4,7 @@ import { Input } from '@/components/common/input'
 import { colors } from '@/constants/colors'
 import { fonts } from '@/constants/fonts'
 import { geometries } from '@/constants/geometries'
+import { StorageManager } from '@/core/StorageManager'
 import { globalStyles } from '@/theme/global'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
@@ -20,9 +21,22 @@ export default function AddLink() {
     router.back()
   }
 
-  const handleAddLink = () => {
-    if (!category) return Alert.alert('Erro', 'Selecione uma categoria.')
-    if (!name || !url) return Alert.alert('Erro', 'Preencha todos os campos.')
+  const handleAddLink = async () => {
+    try {
+      if (!category) return Alert.alert('Erro', 'Selecione uma categoria.')
+      if (!name.trim() || !url) return Alert.alert('Erro', 'Preencha todos os campos.')
+
+      await StorageManager.GetInstance().AddLinkStorage({
+        id: new Date().getTime().toString(),
+        name,
+        url,
+        category,
+      })
+      Alert.alert('Pronto', 'Link adicionado com sucesso.', [{ text: 'Ok', onPress: () => router.back() }])
+    } catch (error) {
+      Alert.alert('Erro', 'Faha ao salvar o link')
+      console.error('Erro ao salvar novo link:', error)
+    }
   }
 
   return (
@@ -38,8 +52,14 @@ export default function AddLink() {
         <ListCategories onChange={setCategory} selected={category} />
 
         <Input placeholder="Nome" placeholderTextColor={colors.gray.light} onChangeText={setName} />
-        <Input placeholder="Url" placeholderTextColor={colors.gray.light} onChangeText={setUrl} autoCorrect={false} />
-        <Button title="Cadastrar" />
+        <Input
+          placeholder="Url"
+          placeholderTextColor={colors.gray.light}
+          onChangeText={setUrl}
+          autoCorrect={false}
+          autoCapitalize="none"
+        />
+        <Button title="Cadastrar" onPress={handleAddLink} />
       </View>
     </View>
   )
