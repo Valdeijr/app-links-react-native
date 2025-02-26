@@ -25,12 +25,17 @@ export default function Index() {
         setLinks(response)
       }
       LoadData()
-    }, [category])
+    }, [category, selectedLink])
   )
 
   const handleVisibleDetais = (item: LinkStorage) => {
     setIsVisible(true)
     setSelectedLink(item)
+  }
+
+  const handleCloseDetais = () => {
+    setIsVisible(false)
+    setSelectedLink({} as LinkStorage)
   }
 
   const handleAddLink = () => {
@@ -59,9 +64,8 @@ export default function Index() {
         transparent
         visible={isVisible}
         animationType={'slide'}
-        name={selectedLink.name}
-        url={selectedLink.url}
-        onClose={() => setIsVisible(false)}
+        link={selectedLink}
+        onClose={handleCloseDetais}
       />
     </View>
   )

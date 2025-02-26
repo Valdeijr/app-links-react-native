@@ -35,13 +35,13 @@ export class StorageManager {
     }
   }
 
-  public async RemoveLinkStorage(linkRemoved: LinkStorage): Promise<void> {
+  public async RemoveLinkStorage(idLink: string): Promise<void> {
     try {
       let data = await this.GetDataStorage()
-      data = data.filter(link => link.id === linkRemoved.id)
+      data = data.filter(link => link.id !== idLink)
       await AsyncStorage.setItem(StorageManager.LINKS_STORAGE_KEY, JSON.stringify(data))
     } catch (error) {
-      console.error('Erro ao remover p link:', error)
+      console.error('Erro ao remover o link:', error)
     }
   }
 
