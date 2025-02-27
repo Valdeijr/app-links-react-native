@@ -1,6 +1,6 @@
 # Gerenciador de Links - Aplicativo Mobile
 
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Native](https://img.shields.io/badge/React_Native-2D336B?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
@@ -17,7 +17,7 @@ Este projeto é um aplicativo mobile para gerenciamento de links. Com ele, você
 
 ## Estrutura do Projeto
 
-No projeto, foi implementada uma abordagem baseada em **Programação Orientada a Objetos (POO)** para o gerenciamento do armazenamento local. A classe `StorageManager` foi desenvolvida para encapsular as operações de leitura e escrita no **AsyncStorage**, garantindo maior segurança e evitando instâncias desnecessárias.
+No projeto, foi implementada uma abordagem baseada em **Programação Orientada a Objetos (POO)** para o gerenciamento do armazenamento local. A classe `StorageManager.ts`, em `./src/core/`, foi desenvolvida para encapsular as operações de leitura e escrita no **AsyncStorage**, garantindo maior segurança e evitando instâncias desnecessárias.
 
 ### Características da implementação:
 - Métodos privados para leitura e escrita dos dados.
@@ -41,9 +41,14 @@ Para rodar o projeto localmente, siga os passos abaixo:
    npx expo start
 
 4. Escaneie o QR Code com o aplicativo Expo Go ou rode no emulador:
+- Android:
    ```bash
-   **Android:** `npm run android`
-   **iOS (MacOS necessário):** `npm run ios`
+    npm run android
+
+- iOS (MacOS necessário):
+   ```bash
+    npm run ios
+
 
 ## Funcionalidades Principais
 
