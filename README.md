@@ -49,7 +49,6 @@ Para rodar o projeto localmente, siga os passos abaixo:
    ```bash
     npm run ios
 
-
 ## Funcionalidades Principais
 
 ### Tela Inicial
